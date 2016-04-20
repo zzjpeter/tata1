@@ -1,0 +1,232 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>me.gacl.SSHE</groupId>
+  <artifactId>SSHE</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  <name/>
+  <description/>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  <dependencies>
+    
+    
+    
+    
+    
+    <!-- spring3 -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>3.1.2.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>3.1.2.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>3.1.2.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>3.1.2.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>3.1.2.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-expression</artifactId>
+            <version>3.1.2.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>3.1.2.RELEASE</version>
+        </dependency>
+        
+        <!-- Struts2的核心包 -->
+        <dependency>
+            <groupId>org.apache.struts</groupId>
+            <artifactId>struts2-core</artifactId>
+            <version>2.3.16</version>
+            <!--
+            这里的 exclusions 是排除包，因为 Struts2中有javassist，Hibernate中也有javassist,
+            所以如果要整合Hibernate，一定要排除掉Struts2中的javassist，否则就冲突了。
+            <exclusions>
+                <exclusion>
+                    <groupId>javassist</groupId>
+                    <artifactId>javassist</artifactId>
+                </exclusion>
+            </exclusions> 
+            -->
+        </dependency>
+        <!-- convention-plugin插件，使用了这个插件之后，就可以采用注解的方式配置Action -->
+        <dependency>
+            <groupId>org.apache.struts</groupId>
+            <artifactId>struts2-convention-plugin</artifactId>
+            <version>2.3.20</version>
+        </dependency>
+        <!--config-browser-plugin插件，使用了这个插件之后，就可以很方便的浏览项目中的所有action及其与 jsp view的映射 -->
+        <dependency>
+            <groupId>org.apache.struts</groupId>
+            <artifactId>struts2-config-browser-plugin</artifactId>
+            <version>2.3.20</version>
+        </dependency>
+        <!-- Struts2和Spring整合插件 -->
+        <dependency>
+            <groupId>org.apache.struts</groupId>
+            <artifactId>struts2-spring-plugin</artifactId>
+            <version>2.3.4.1</version>
+        </dependency>
+        
+        <!-- hibernate4 -->
+        <dependency>
+             <groupId>org.hibernate</groupId>
+             <artifactId>hibernate-core</artifactId>
+             <version>4.1.7.Final</version>
+         </dependency>
+	<dependency>
+		<groupId>antlr</groupId>
+		<artifactId>antlr</artifactId>
+		<version>2.7.7</version>
+	</dependency>
+	<dependency>
+		<groupId>org.jboss.logging</groupId>
+		<artifactId>jboss-logging</artifactId>
+		<version>3.1.0.GA</version>
+	</dependency>
+	<dependency>
+		<groupId>org.jboss.spec.javax.transaction</groupId>
+		<artifactId>jboss-transaction-api_1.1_spec</artifactId>
+		<version>1.0.0.Final</version>
+	</dependency>
+	<dependency>
+		<groupId>dom4j</groupId>
+		<artifactId>dom4j</artifactId>
+		<version>1.6.1</version>
+	</dependency>
+	<dependency>
+		<groupId>org.hibernate.javax.persistence</groupId>
+		<artifactId>hibernate-jpa-2.0-api</artifactId>
+		<version>1.0.1.Final</version>
+	</dependency>
+	<dependency>
+	<groupId>org.javassist</groupId>
+	<artifactId>javassist</artifactId>
+	<version>3.15.0-GA</version>
+    </dependency>
+	<dependency>
+		<groupId>org.hibernate</groupId>
+		<artifactId>hibernate-commons-annotations</artifactId>
+		<version>3.2.0.Final</version>
+	</dependency>
+	
+	
+        <!-- mysql驱动包 -->
+         <dependency>
+             <groupId>mysql</groupId>
+             <artifactId>mysql-connector-java</artifactId>
+             <version>5.1.34</version>
+         </dependency>
+        
+        
+        <!-- SQLServer数据库驱动包 -->
+        <!--   <dependency>
+             <groupId>net.sourceforge.jtds</groupId>
+             <artifactId>jtds</artifactId>
+             <version>1.3.1</version>
+         </dependency>
+         -->
+         
+         <!-- Maven3不提供Oracle JDBC driver，为了在Maven项目中应用Oracle JDBC driver,必须手动添加到本地仓库
+         解决办法：先从网上下载Oracle的驱动包，然后通过Maven命令放到本地库中去
+         安装命令：
+         
+         mvn install:install-file -Dfile={Path/to/your/ojdbc.jar} -DgroupId=com.oracle -DartifactId=ojdbc6 -Dversion=11.2.0.1.0 -Dpackaging=jar
+         例如把位于F:\oracle驱动\ojdbc6.jar添加到本地仓库中
+         mvn install:install-file -Dfile=F:/oracle驱动/ojdbc6.jar -DgroupId=com.oracle -DartifactId=ojdbc6 -Dversion=11.2.0.1.0 -Dpackaging=jar
+         -->
+          <!--Oracle数据库驱动包，针对Oracle11.2的ojdbc6.jar -->
+          <!--
+          <dependency>  
+              <groupId>com.oracle</groupId>  
+              <artifactId>ojdbc6</artifactId>  
+              <version>11.2.0.1.0</version>  
+         </dependency> 
+         -->
+        <!-- 在平时开发中，我们一般都会使用数据库连接池，应用系统初始化时，由数据库连接池向数据库申请一定数量的数据库连接，然后放到一个连接池中，当需要操作数据库时，就从数据库连接池中取出一个数据库连接，通过从连接池中获取到的数据库连接对象连接上数据库，然后进行CRUD操作，关于数据库连接池的选择，常用的有DBCP，C3P0和Druid，这里我们使用Druid作为我们的数据库连接池。这三种连接池各自有各自的特点，自己熟悉哪个就用哪个，萝卜白菜，各有所爱 -->
+        <!--Druid连接池包 -->
+         <dependency>
+             <groupId>com.alibaba</groupId>
+             <artifactId>druid</artifactId>
+             <version>1.0.12</version>
+         </dependency>
+         
+         <!-- 使用Spring的aop时需要使用到aspectjweaver包 -->
+         <!--aspectjweaver包 -->
+         <dependency>
+              <groupId>org.aspectj</groupId>
+              <artifactId>aspectjweaver</artifactId>
+              <version>1.8.5</version>
+          </dependency>
+        
+        
+        
+        
+        <!-- Junit -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+        
+        
+        
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-war-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.7</source>
+          <target>1.7</target>
+        </configuration>
+      </plugin>
+      
+
+
+			<plugin>
+				<!-- <groupId>org.eclipse.jetty</groupId> <artifactId>jetty-maven-plugin</artifactId> 
+					<version>9.3.7.v20160115</version> -->
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
+				<executions>
+					<execution>
+						<!-- 在打包成功后使用jetty:run来运行jetty服务 -->
+						<phase>package</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+
+					</execution>
+				</executions>
+
+			</plugin>
+
+
+    </plugins>
+  </build>
+</project>
